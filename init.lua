@@ -1,4 +1,4 @@
-require("config.lazy")
+vim.g.mapleader = " "
 
 vim.o.number = true
 vim.o.relativenumber = true
@@ -10,3 +10,5 @@ vim.o.softtabstop = 4
 
 -- Show bottom and top lines when scrolling
 vim.opt.scrolloff = 10
+
+require("config.lazy")

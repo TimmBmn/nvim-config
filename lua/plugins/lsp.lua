@@ -8,6 +8,7 @@ return {
 		{'hrsh7th/cmp-nvim-lsp'},
 		{'hrsh7th/nvim-cmp'},
 		{'L3MON4D3/LuaSnip'},
+		{"hrsh7th/cmp-nvim-lsp-signature-help"},
 	},
 
 	config = function()
@@ -46,9 +47,15 @@ return {
 			-- Scroll up and down in the completion documentation
 			['<C-u>'] = cmp.mapping.scroll_docs(-4),
 			['<C-d>'] = cmp.mapping.scroll_docs(4),
-		  })
-		})
+		  }),
 
+
+			--sources = {
+			--	{ name = 'nvim_lsp_signature_help' }
+			--}
+
+
+		})
 
 	end
 }

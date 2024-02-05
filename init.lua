@@ -11,4 +11,6 @@ vim.o.softtabstop = 4
 -- Show bottom and top lines when scrolling
 vim.opt.scrolloff = 10
 
+vim.keymap.set("n", "<leader>e", ":lua vim.diagnostic.open_float(0, {scope=\"line\"})<CR>")
+
 require("config.lazy")

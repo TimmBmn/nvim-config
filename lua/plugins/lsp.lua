@@ -33,6 +33,14 @@ return {
 		local cmp_action = lsp_zero.cmp_action()
 
 		cmp.setup({
+
+
+			sources = {
+				{ name = "nvim_lsp" },
+				{ name = 'nvim_lsp_signature_help' }
+			},
+
+
 		  mapping = cmp.mapping.preset.insert({
 			-- `Enter` key to confirm completion
 			['<CR>'] = cmp.mapping.confirm({select = false}),
@@ -48,13 +56,6 @@ return {
 			['<C-u>'] = cmp.mapping.scroll_docs(-4),
 			['<C-d>'] = cmp.mapping.scroll_docs(4),
 		  }),
-
-
-			--sources = {
-			--	{ name = 'nvim_lsp_signature_help' }
-			--}
-
-
 		})
 
 	end

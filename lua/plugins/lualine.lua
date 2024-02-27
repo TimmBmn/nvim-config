@@ -13,18 +13,29 @@ return {
 		local git_blame = require("gitblame")
 
 
+		local function getFileName()
+			local bufnr = vim.fn.bufnr()
+			local bufname = vim.fn.fnamemodify(vim.fn.bufname(bufnr), ":t")
+			local bufstatus = vim.fn.getbufvar(bufnr, "&modified")
+
+			return bufname .. (bufstatus ~= 0 and " •" or "")
+		end
+
 		local function gitblameShowCondition()
 			return git_blame.is_blame_text_available() and git_blame.get_current_blame_text() ~= nil
 		end
 
+
 		require("lualine").setup({
 			sections = {
-				lualine_c = {
-					{ git_blame.get_current_blame_text, cond = gitblameShowCondition}
-				}
+				lualine_a = {"mode"},
+				lualine_b = {"branch", "diff", "diagnostics"},
+				lualine_c = {{getFileName}},
+
+				lualine_x = {{git_blame.get_current_blame_text, cond = gitblameShowCondition}},
+				lualine_y = {"encoding", "fileformat"},
+				lualine_z = {"location"},
 			}
 		})
-
-
 	end
 }

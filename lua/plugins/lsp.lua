@@ -25,16 +25,14 @@ return {
 		  ensure_installed = {"lua_ls", "pyright"},
 		  handlers = {
 			lsp_zero.default_setup,
+
+            -- global vim fix (but every lua file)
+            -- from ":help lsp-zeor-guide:lua-lsp-for-neovim"
+            lua_ls = function ()
+                local lua_opts = lsp_zero.nvim_lua_ls()
+                require('lspconfig').lua_ls.setup(lua_opts)
+            end
 		  },
-
-
-		  -- fixes the "undefind global "vim"" error but it does it in every
-		  -- lua file. So if you every write a lua program watch out!
-			require("lspconfig").lua_ls.setup ({
-				settings = { Lua = { diagnostics = { globals = {'vim'}}}},
-			})
-
-
 		})
 
 		----------------------------

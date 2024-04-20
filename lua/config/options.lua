@@ -19,3 +19,6 @@ vim.o.wrap = false
 
 -- Show bottom and top lines when scrolling
 vim.opt.scrolloff = 10
+
+-- Show all matching search patterns
+vim.opt.hlsearch = true

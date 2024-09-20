@@ -1,20 +1,9 @@
 return {
 	"nvim-treesitter/nvim-treesitter",
-
-	-- updates highlighters on startup
 	build = ":TSUpdate",
-
-	-- starts with specificed options below
-	config = function(_, opts)
-		require("nvim-treesitter.configs").setup(opts)
-	end,
-
+    main="nvim-treesitter.configs",
 	opts = {
-
-		-- A list of parser names, or "all" (the five listed parsers should always be installed)
-		ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "python" },
-
-		-- Install parsers synchronously (only applied to `ensure_installed`)
+        ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "markdown", "markdown_inline" },
 		sync_install = false,
 
 		-- Automatically install missing parsers when entering buffer
@@ -24,5 +13,7 @@ return {
 		highlight = {
 			enable = true,
 		},
-	},
+
+        additional_vim_regex_highlighting = false
+	}
 }

@@ -1,5 +1,5 @@
 return {
-    { "williamboman/mason.nvim",           opts = {} },
+    { "williamboman/mason.nvim", opts = {} },
     {
         "neovim/nvim-lspconfig",
         dependencies = {
@@ -33,7 +33,7 @@ return {
                         }),
                     })
 
-                    cmp.setup.cmdline({"/", "?"}, {
+                    cmp.setup.cmdline({ "/", "?" }, {
                         mapping = cmp.mapping.preset.cmdline(),
                         sources = {
                             { name = "buffer" },

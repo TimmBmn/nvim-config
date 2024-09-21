@@ -6,11 +6,20 @@ return {
             { "williamboman/mason-lspconfig.nvim", opts = {} },
             {
                 "hrsh7th/nvim-cmp",
+                dependencies = {
+                    { "hrsh7th/cmp-nvim-lsp-signature-help" },
+                    { "hrsh7th/cmp-buffer" },
+                    { "hrsh7th/cmp-path" },
+                    { "hrsh7th/cmp-cmdline" }
+                },
                 config = function()
                     local cmp = require("cmp")
                     cmp.setup({
                         sources = {
-                            { name = "nvim_lsp" }
+                            { name = "nvim_lsp" },
+                            { name = "nvim_lsp_signature_help" },
+                            { name = "buffer" },
+                            { name = "path" }
                         },
                         mapping = cmp.mapping.preset.insert({
                             -- these are the only two i am actively using right now
@@ -22,6 +31,21 @@ return {
                             --['<C-f>'] = cmp.mapping.scroll_docs(4),
                             --['<C-e>'] = cmp.mapping.abort(),
                         }),
+                    })
+
+                    cmp.setup.cmdline({"/", "?"}, {
+                        mapping = cmp.mapping.preset.cmdline(),
+                        sources = {
+                            { name = "buffer" },
+                        }
+                    })
+
+                    cmp.setup.cmdline(":", {
+                        mapping = cmp.mapping.preset.cmdline(),
+                        sources = {
+                            { name = "path" },
+                            { name = "cmdline" }
+                        }
                     })
                 end,
             },

@@ -1,5 +1,5 @@
 vim.g.mapleader=" "
-vim.o.guicursor = ""
+--vim.o.guicursor = ""
 
 vim.o.number = true
 vim.o.relativenumber = true

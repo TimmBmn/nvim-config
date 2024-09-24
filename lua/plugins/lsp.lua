@@ -1,9 +1,16 @@
 return {
     { "williamboman/mason.nvim", opts = {} },
     {
+        "williamboman/mason-lspconfig.nvim",
+        opts = {
+            ensure_installed = { "lua_ls", "pyright", "emmet_language_server" },
+        }
+    },
+    {
         "neovim/nvim-lspconfig",
         dependencies = {
-            { "williamboman/mason-lspconfig.nvim", opts = {} },
+            { "j-hui/fidget.nvim",   opts = {} },
+            { "hrsh7th/cmp-nvim-lsp" },
             {
                 "hrsh7th/nvim-cmp",
                 dependencies = {
@@ -49,7 +56,6 @@ return {
                     })
                 end,
             },
-            { "hrsh7th/cmp-nvim-lsp" },
         },
         event = { "BufReadPre", "BufNewFile" },
         config = function()

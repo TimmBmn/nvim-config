@@ -18,6 +18,7 @@ vim.opt.rtp:prepend(lazypath)
 -- load options (before all the plugins)
 require("config.options")
 require("config.remap")
+require("config.autocommands")
 
 
 -- load lazy.nvim

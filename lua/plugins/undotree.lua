@@ -1,6 +1,6 @@
 return {
 	"mbbill/undotree",
     keys = {
-         {"<leader>ut", ":UndotreeToggle<CR>", mode = "n", silent = true }
+         {"<leader>ut", "<cmd>UndotreeToggle<cr>", mode = "n", silent = true }
     }
 }

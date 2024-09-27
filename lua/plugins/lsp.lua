@@ -1,3 +1,4 @@
+-- TODO add snipped engine and check what it actually does (e.g. LuaSnip)
 return {
     { "williamboman/mason.nvim", opts = {} },
     {
@@ -22,6 +23,10 @@ return {
                 config = function()
                     local cmp = require("cmp")
                     cmp.setup({
+                        window = {
+                            completion = cmp.config.window.bordered(),
+                            documentation = cmp.config.window.bordered(),
+                        },
                         sources = {
                             { name = "nvim_lsp" },
                             { name = "nvim_lsp_signature_help" },
@@ -57,17 +62,20 @@ return {
                 end,
             },
         },
-        event = { "BufReadPre", "BufNewFile" },
         config = function()
             local lspconfig = require("lspconfig")
             local mason_lspconfig = require("mason-lspconfig")
             local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
+            local capabilities = vim.tbl_deep_extend('force',
+                vim.lsp.protocol.make_client_capabilities(),
+                cmp_nvim_lsp.default_capabilities())
+
             mason_lspconfig.setup_handlers({
                 -- default handler for installed servers
                 function(server_name)
                     lspconfig[server_name].setup({
-                        capabilities = cmp_nvim_lsp.default_capabilities()
+                        capabilities = capabilities
                     })
                 end,
             })

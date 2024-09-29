@@ -90,7 +90,7 @@ return {
                     vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
                     vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, opts)
                     vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
-                    vim.keymap.set("n", "<leader>df", vim.lsp.buf.format, opts)
+                    vim.keymap.set("n", "<leader>vr", vim.lsp.buf.rename, opts)
                 end
 
             })

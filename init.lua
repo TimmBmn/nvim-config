@@ -1,3 +1,5 @@
+-- TODO add folding
+
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
     local lazyrepo = "https://github.com/folke/lazy.nvim.git"
@@ -22,8 +24,7 @@ require("config.autocommands")
 
 
 -- load lazy.nvim
-require("lazy").setup({
-    import = "plugins",
+require("lazy").setup("plugins", {
     install = { colorscheme = { "habamax" } },
     checker = { enabled = true, notify = false },
     change_detection = { notify = false },
